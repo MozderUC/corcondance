@@ -1,0 +1,2 @@
+D:\GitHub\concordance\concordance\bin\Debug\concordance.exe.config
+D:\GitHub\corcondance\bin\Debug\concordance.exe.config
