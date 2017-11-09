@@ -1,2 +1,7 @@
 D:\GitHub\concordance\concordance\bin\Debug\concordance.exe.config
 D:\GitHub\corcondance\bin\Debug\concordance.exe.config
+D:\GitHub\corcondance\bin\Debug\concordance.exe
+D:\GitHub\corcondance\bin\Debug\concordance.pdb
+D:\GitHub\corcondance\obj\Debug\concordance.csprojResolveAssemblyReference.cache
+D:\GitHub\corcondance\obj\Debug\concordance.exe
+D:\GitHub\corcondance\obj\Debug\concordance.pdb

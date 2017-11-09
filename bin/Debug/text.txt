@@ -1,0 +1,7 @@
+car car car
+man man savanna
+bool
+aba
+savanna
+gooa
+car

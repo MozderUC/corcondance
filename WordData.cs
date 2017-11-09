@@ -8,5 +8,13 @@ namespace concordance
 {
     class WordData
     {
+        public string WordValue { get; set; }
+        public int LineNumber { get; set; }
+
+        public WordData(string word, int line)
+        {
+            this.WordValue = word;
+            this.LineNumber = line;
+        }
     }
 }
