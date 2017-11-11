@@ -17,9 +17,13 @@ namespace concordance
             int i = 0;
             foreach (string line in lines)
             {
-                string[] source = line.Split(new char[] { '.', '?', '!', ' ', ';', ':', ',', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] source = line.Split(new char[] { '.', '?', '!', ' ', ';', ':', ',', '\n', '\r', '(', ')' }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (string w in source)
                 {
+                    if (Char.IsNumber(w[0]))
+                    {
+                        continue;
+                    }
                     words.Add(new WordData(w, i + 1));
                 }
                 i++;

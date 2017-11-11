@@ -10,6 +10,7 @@ namespace concordance
     {
         static void Main(string[] args)
         {
+
             Concordance concordance = new Concordance();
             concordance.GetData("text.txt");
             concordance.MakeCorcondance();
