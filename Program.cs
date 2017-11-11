@@ -14,6 +14,7 @@ namespace concordance
             concordance.GetData("text.txt");
             concordance.MakeCorcondance();
 
+            concordance.SaveDataToFile("outputData.txt");
             string str = concordance.DisplayData();
             Console.WriteLine(str);
         }

@@ -8,7 +8,7 @@ namespace concordance
 {
     class Concordance
     {
-        protected class ConcordanceData
+        private class ConcordanceData
         {
             public string WordValue { get; set; }
             public int NumberInText { get; set; }
@@ -30,16 +30,26 @@ namespace concordance
 
             public override string ToString()
             {
+                int N = 20;
+                String repeatedString;
+
                 string str = "";
                 foreach (int i in ArrOfLine)
                     str = str + Convert.ToString(i) + " ";
 
-                return WordValue + " " + Convert.ToString(NumberInText) + " " + str;
+                try
+                {
+                    repeatedString = new String('.', N - WordValue.Count());
+                }
+                catch { repeatedString = "."; }
+                
+
+                return WordValue + repeatedString + Convert.ToString(NumberInText) + ": " + str;
             }
         }
 
-        List<WordData> wordData = new List<WordData>();
-        IEnumerable<ConcordanceData> concordanceData;
+        private List<WordData> wordData = new List<WordData>();
+        private IEnumerable<ConcordanceData> concordanceData;
 
         public void GetData(string Path)
         {
@@ -49,12 +59,12 @@ namespace concordance
         {
             var GroupWords =
                     from word in wordData
-                    group word by word.WordValue into newGroup
+                    group word by word.WordValue.ToLowerInvariant() into newGroup
                     orderby newGroup.Key
                     select newGroup;
             concordanceData = GroupWords.Select(x => new ConcordanceData { WordValue = x.Key, NumberInText = x.Count(), ArrOfLine = new HashSet<int>(x.Select(y => y.LineNumber)) });          
         }
-         public string DisplayData()
+        public string DisplayDatas()
         {
             string str = "";
             foreach(var data in concordanceData)
@@ -63,5 +73,29 @@ namespace concordance
             }
             return str;
         }
+
+        public string DisplayData()
+        {
+            string str = "";
+            char ch = ' ';
+
+            foreach (var data in concordanceData)
+            {
+                if(data.WordValue[0]!=ch)
+                {
+                    ch = data.WordValue[0];
+                    str = str + "\n"+ Char.ToUpper(ch) + "\n" + data.ToString() + "\n" ;
+                    continue;
+                }
+
+                str = str + data.ToString() + "\n";
+            }
+            return str;
+        }
+        public void SaveDataToFile(string path)
+        {
+            System.IO.File.WriteAllText(path, DisplayData());
+        }
+
     }
 }
