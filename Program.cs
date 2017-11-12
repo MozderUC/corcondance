@@ -11,12 +11,14 @@ namespace concordance
         static void Main(string[] args)
         {
 
+
             Concordance concordance = new Concordance();
+
             concordance.GetData("text.txt");
             concordance.MakeCorcondance();
 
-            concordance.SaveDataToFile("outputData.txt");
-            string str = concordance.DisplayData();
+            concordance.SaveCorcondanceToFile("outputData.txt");
+            string str = concordance.GetCorcondanceString();
             Console.WriteLine(str);
         }
     }

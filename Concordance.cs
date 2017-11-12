@@ -62,19 +62,11 @@ namespace concordance
                     group word by word.WordValue.ToLowerInvariant() into newGroup
                     orderby newGroup.Key
                     select newGroup;
-            concordanceData = GroupWords.Select(x => new ConcordanceData { WordValue = x.Key, NumberInText = x.Count(), ArrOfLine = new HashSet<int>(x.Select(y => y.LineNumber)) });          
+            concordanceData = GroupWords
+                              .Select(x => new ConcordanceData { WordValue = x.Key, NumberInText = x.Count(), ArrOfLine = new HashSet<int>(x.Select(y => y.LineNumber)) });          
         }
-        public string DisplayDatas()
-        {
-            string str = "";
-            foreach(var data in concordanceData)
-            {
-                str = str + data.ToString()+"\n";
-            }
-            return str;
-        }
-
-        public string DisplayData()
+        
+        public string GetCorcondanceString()
         {
             string str = "";
             char ch = ' ';
@@ -92,9 +84,9 @@ namespace concordance
             }
             return str;
         }
-        public void SaveDataToFile(string path)
+        public void SaveCorcondanceToFile(string path)
         {
-            System.IO.File.WriteAllText(path, DisplayData());
+            System.IO.File.WriteAllText(path, GetCorcondanceString());
         }
 
     }
